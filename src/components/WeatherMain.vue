@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import getApi from "@/utils/getApi";
 import CitySearch from "@/components/CitySearch";
 import CityStatus from "@/components/CityStatus";
 
@@ -15,11 +15,7 @@ export default {
 		CitySearch,
 		CityStatus,
 	},
-	// data() {
-	// 	return {
-	// 		forecast: {},
-	// 	};
-	// },
+	emits: ["get"],
 	props: {
 		forecast: {
 			type: Object,
@@ -28,28 +24,14 @@ export default {
 	},
 	methods: {
 		async getWeather(coords) {
-			const options = {
-				method: "GET",
-				url: "https://weatherapi-com.p.rapidapi.com/forecast.json",
-				params: {
+			const forecast = await getApi(
+				"https://weatherapi-com.p.rapidapi.com/forecast.json",
+				{
 					q: `${coords}`,
-					days: "3",
-					lang: "ru",
-				},
-				headers: {
-					"X-RapidAPI-Key":
-						"289e47d0dfmsh8d74c82e635ad3dp1bc686jsn0859ae9abdaf",
-					"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
-				},
-			};
-
-			try {
-				const response = await axios.request(options);
-				// this.forecast = response.data;
-				this.$emit("get", coords, response.data);
-			} catch (error) {
-				console.log(error);
-			}
+					days: "10",
+				}
+			);
+			this.$emit("get", coords, forecast);
 		},
 	},
 };

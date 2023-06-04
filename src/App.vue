@@ -1,6 +1,10 @@
 <template>
 	<div class="wrapper">
-		<city-list :forecasts="forecasts" @choose="changeCurrentCoords"></city-list>
+		<city-list
+			:forecasts="forecasts"
+			:currentCoords="currentCoords"
+			@choose="changeCurrentCoords"
+		></city-list>
 		<weather-main @get="addForecast" :forecast="currentForecast"></weather-main>
 	</div>
 </template>
@@ -49,10 +53,14 @@ ul {
 	list-style-type: none;
 }
 .wrapper {
-	background: url("@/assets/back_1.jpg") no-repeat center top fixed;
-	background-size: cover;
+	background: rgb(9, 9, 121);
+	background: linear-gradient(
+		90deg,
+		rgba(9, 9, 121, 1) 25%,
+		rgba(0, 212, 255, 1) 100%
+	);
 	display: grid;
 	min-height: 100vh;
-	grid-template: 1fr / 200px 1fr;
+	grid-template: 1fr / 300px 1fr;
 }
 </style>

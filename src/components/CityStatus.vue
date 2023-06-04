@@ -8,7 +8,7 @@
 			<img :src="status.icon" />
 		</div>
 		<div v-else>
-			<h3>Choose City</h3>
+			<h1>Choose City</h1>
 		</div>
 	</div>
 </template>
@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 .status {
-	margin-top: 150px;
+	margin-top: 200px;
 	text-align: center;
 }
 </style>
