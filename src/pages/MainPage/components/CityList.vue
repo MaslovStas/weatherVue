@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import CityItem from "@/components/CityItem.vue";
+import CityItem from "./CityItem";
 
 export default {
 	components: {

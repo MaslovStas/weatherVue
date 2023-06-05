@@ -7,8 +7,8 @@
 
 <script>
 import getApi from "@/utils/getApi";
-import CitySearch from "@/components/CitySearch";
-import CityStatus from "@/components/CityStatus";
+import CitySearch from "./CitySearch";
+import CityStatus from "./CityStatus";
 
 export default {
 	components: {

@@ -36,10 +36,13 @@ export default {
 			this.searchQuery.length > 2 ? this.searchCity() : (this.cities = []);
 		},
 		selectedCityIndex(index) {
-			const city = this.cities[index];
-			const coords = `${city.lat},${city.lon}`;
-			this.searchQuery = "";
-			this.$emit("choose", coords);
+			if (this.selectedCityIndex) {
+				const city = this.cities[index];
+				const coords = `${city.lat},${city.lon}`;
+				this.searchQuery = "";
+				this.$emit("choose", coords);
+				this.selectedCityIndex = "";
+			}
 		},
 	},
 };
