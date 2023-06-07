@@ -19,9 +19,10 @@ export default {
 	},
 	computed: {
 		city() {
+			const currentHour = new Date().getHours();
 			return {
 				name: this.forecast.location.name,
-				temp: this.forecast.current.temp_c,
+				temp: this.forecast.forecast.forecastday[0].hour[currentHour].temp_c,
 				text: this.forecast.current.condition.text,
 				mintemp: this.forecast.forecast.forecastday[0].day.mintemp_c,
 				maxtemp: this.forecast.forecast.forecastday[0].day.maxtemp_c,

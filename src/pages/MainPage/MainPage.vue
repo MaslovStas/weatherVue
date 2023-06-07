@@ -41,7 +41,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .wrapper {
 	background: rgb(9, 9, 121);
 	background: linear-gradient(

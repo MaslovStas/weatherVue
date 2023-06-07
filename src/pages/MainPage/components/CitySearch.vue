@@ -1,5 +1,5 @@
 <template>
-	<div class="search">
+	<div class="city-search">
 		<my-input
 			v-model:inputValue="searchQuery"
 			v-model:selectValue="selectedCityIndex"
@@ -49,8 +49,11 @@ export default {
 </script>
 
 <style scoped>
-.search {
+.city-search {
+	display: flex;
+	justify-content: end;
 	padding: 20px;
-	float: right;
+	height: 150px;
+	width: 100%;
 }
 </style>

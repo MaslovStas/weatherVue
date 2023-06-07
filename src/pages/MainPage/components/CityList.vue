@@ -34,11 +34,6 @@ export default {
 			this.$emit("choose", coords);
 		},
 	},
-	// computed: {
-	// 	isActive() {
-	// 		return this.data
-	// 	}
-	// },
 };
 </script>
 

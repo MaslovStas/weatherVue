@@ -1,15 +1,9 @@
 <template>
 	<div class="status">
-		<div v-if="Object.keys(forecast).length">
-			<h3>{{ status.name }}</h3>
-			<h3>{{ status.temp }}°</h3>
-			<h5>{{ status.text }}</h5>
-			<p>Min: {{ status.mintemp }}°, max: {{ status.maxtemp }}°</p>
-			<img :src="status.icon" />
-		</div>
-		<div v-else>
-			<h1>Choose City</h1>
-		</div>
+		<h3>{{ status.name }}</h3>
+		<h3>{{ status.temp }}°</h3>
+		<h5>{{ status.text }}</h5>
+		<p>Min: {{ status.mintemp }}°, max: {{ status.maxtemp }}°</p>
 	</div>
 </template>
 
@@ -23,13 +17,13 @@ export default {
 	},
 	computed: {
 		status() {
+			const currentHour = new Date().getHours();
 			return {
 				name: this.forecast.location.name,
-				temp: this.forecast.current.temp_c,
+				temp: this.forecast.forecast.forecastday[0].hour[currentHour].temp_c,
 				text: this.forecast.current.condition.text,
 				mintemp: this.forecast.forecast.forecastday[0].day.mintemp_c,
 				maxtemp: this.forecast.forecast.forecastday[0].day.maxtemp_c,
-				icon: this.forecast.current.condition.icon,
 			};
 		},
 	},
@@ -38,7 +32,7 @@ export default {
 
 <style scoped>
 .status {
-	margin-top: 200px;
 	text-align: center;
+	height: 150px;
 }
 </style>

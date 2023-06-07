@@ -1,19 +1,25 @@
 <template>
 	<section class="main">
 		<city-search @choose="getWeather"></city-search>
-		<city-status :forecast="forecast"></city-status>
+		<forecast-status v-if="isForecast" :forecast="forecast"></forecast-status>
+		<forecast-hour v-if="isForecast" :forecast="forecast"></forecast-hour>
+		<forecast-day v-if="isForecast" :forecast="forecast"></forecast-day>
 	</section>
 </template>
 
 <script>
 import getApi from "@/utils/getApi";
 import CitySearch from "./CitySearch";
-import CityStatus from "./CityStatus";
+import ForecastStatus from "./ForecastStatus";
+import ForecastHour from "./ForecastHour";
+import ForecastDay from "./ForecastDay";
 
 export default {
 	components: {
 		CitySearch,
-		CityStatus,
+		ForecastStatus,
+		ForecastHour,
+		ForecastDay,
 	},
 	emits: ["get"],
 	props: {
@@ -32,6 +38,11 @@ export default {
 				}
 			);
 			this.$emit("get", coords, forecast);
+		},
+	},
+	computed: {
+		isForecast() {
+			return Object.keys(this.forecast).length !== 0;
 		},
 	},
 };
