@@ -46,6 +46,7 @@ export default {
 .forecast {
 	display: flex;
 	justify-content: center;
+	margin-top: 10px;
 }
 .wrapper {
 	border: 1px solid white;

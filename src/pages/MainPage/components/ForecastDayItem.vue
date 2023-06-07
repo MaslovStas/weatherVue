@@ -21,7 +21,6 @@ export default {
 .forecast-day {
 	display: grid;
 	grid-template-columns: 2fr 2fr 1fr;
-	border-bottom: 1px solid;
 	padding: 0 10px;
 }
 .text-center-vertical {

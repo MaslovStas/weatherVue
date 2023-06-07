@@ -2,9 +2,10 @@
 	<div class="forecast">
 		<div class="wrapper">
 			<forecast-day-item
-				v-for="day in forecastDay"
+				v-for="(day, index) in forecastDay"
 				:forecast="day"
 				:key="day.day"
+				:class="{ 'border-bottom': index !== forecastDay.length - 1 }"
 			></forecast-day-item>
 		</div>
 	</div>
@@ -48,7 +49,7 @@ export default {
 <style scoped>
 .forecast {
 	display: flex;
-	margin-top: 10px;
+	padding: 10px;
 	justify-content: center;
 }
 .wrapper {
@@ -58,5 +59,8 @@ export default {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+.border-bottom {
+	border-bottom: 1px solid;
 }
 </style>

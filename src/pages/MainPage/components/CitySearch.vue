@@ -53,7 +53,7 @@ export default {
 	display: flex;
 	justify-content: end;
 	padding: 20px;
-	height: 150px;
+	height: 180px;
 	width: 100%;
 }
 </style>

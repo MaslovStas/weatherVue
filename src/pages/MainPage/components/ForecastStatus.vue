@@ -33,6 +33,5 @@ export default {
 <style scoped>
 .status {
 	text-align: center;
-	height: 150px;
 }
 </style>
