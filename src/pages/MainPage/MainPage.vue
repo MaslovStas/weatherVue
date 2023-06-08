@@ -1,22 +1,22 @@
 <template>
-	<div class="wrapper">
+	<div class="main">
 		<city-list
 			:forecasts="forecasts"
 			:currentCoords="currentCoords"
 			@choose="changeCurrentCoords"
-		></city-list>
-		<weather-main @get="addForecast" :forecast="currentForecast"></weather-main>
+		/>
+		<forecast-main @get="addForecast" :forecast="currentForecast" />
 	</div>
 </template>
 
 <script>
 import CityList from "./components/CityList";
-import WeatherMain from "./components/WeatherMain";
+import ForecastMain from "./components/ForecastMain";
 
 export default {
 	components: {
 		CityList,
-		WeatherMain,
+		ForecastMain,
 	},
 	data() {
 		return {
@@ -41,9 +41,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.wrapper {
-	background: rgb(9, 9, 121);
+<style>
+.main {
 	background: linear-gradient(
 		90deg,
 		rgba(9, 9, 121, 1) 25%,
@@ -51,6 +50,6 @@ export default {
 	);
 	display: grid;
 	min-height: 100vh;
-	grid-template: 1fr / 300px 1fr;
+	grid-template-columns: 300px 1fr;
 }
 </style>

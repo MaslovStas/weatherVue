@@ -4,7 +4,7 @@
 			v-model:inputValue="searchQuery"
 			v-model:selectValue="selectedCityIndex"
 			:options="cities"
-		></my-input>
+		/>
 	</div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .city-search {
 	display: flex;
 	justify-content: end;

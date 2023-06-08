@@ -1,5 +1,5 @@
 <template>
-	<div class="forecast-hour">
+	<div class="text--center">
 		<p>{{ forecast.time }}</p>
 		<img :src="forecast.icon" />
 		<p>{{ forecast.desc }}</p>
@@ -17,8 +17,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.forecast-hour {
-	text-align: center;
-}
-</style>
+<style></style>

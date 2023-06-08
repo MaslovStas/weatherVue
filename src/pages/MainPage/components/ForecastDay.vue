@@ -1,11 +1,11 @@
 <template>
-	<div class="forecast">
-		<div class="wrapper">
+	<div class="forecast-day">
+		<div class="forecast-day__body box--border">
 			<forecast-day-item
 				v-for="(day, index) in forecastDay"
 				:forecast="day"
 				:key="day.day"
-				:class="{ 'border-bottom': index !== forecastDay.length - 1 }"
+				:class="{ 'box--border-bottom': index !== forecastDay.length - 1 }"
 			></forecast-day-item>
 		</div>
 	</div>
@@ -46,15 +46,13 @@ export default {
 };
 </script>
 
-<style scoped>
-.forecast {
+<style>
+.forecast-day {
 	display: flex;
-	padding: 10px;
 	justify-content: center;
+	padding: 10px;
 }
-.wrapper {
-	border: 1px solid white;
-	border-radius: 12px;
+.forecast-day__body {
 	padding: 5px;
 	display: flex;
 	flex-direction: column;

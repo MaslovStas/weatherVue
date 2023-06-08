@@ -1,9 +1,9 @@
 <template>
-	<section class="main">
-		<city-search @choose="getWeather"></city-search>
-		<forecast-status v-if="isForecast" :forecast="forecast"></forecast-status>
-		<forecast-hour v-if="isForecast" :forecast="forecast"></forecast-hour>
-		<forecast-day v-if="isForecast" :forecast="forecast"></forecast-day>
+	<section>
+		<city-search @choose="getWeather" />
+		<forecast-status v-if="isForecast" :forecast="forecast" />
+		<forecast-hour v-if="isForecast" :forecast="forecast" />
+		<forecast-day v-if="isForecast" :forecast="forecast" />
 	</section>
 </template>
 
@@ -48,4 +48,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+.test {
+	display: inline-block;
+	/* flex-direction: column; */
+}
+</style>

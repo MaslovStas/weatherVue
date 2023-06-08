@@ -1,5 +1,5 @@
 <template>
-	<div class="status">
+	<div class="text--center">
 		<h3>{{ status.name }}</h3>
 		<h3>{{ status.temp }}°</h3>
 		<h5>{{ status.text }}</h5>
@@ -30,8 +30,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.status {
-	text-align: center;
-}
-</style>
+<style></style>

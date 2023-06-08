@@ -1,21 +1,20 @@
 <template>
-	<div class="search">
+	<div class="search-field">
 		<input
-			class="search__input"
+			class="search-field__text text--black"
 			:value="inputValue"
 			@input="updateInput"
 			type="text"
 			placeholder="Search..."
 		/>
 		<select
-			class="search__select"
+			class="search-field__select"
 			size="5"
 			@change="updateSelect"
 			:value="selectValue"
-			ref="mySelect"
 		>
 			<option
-				class="search__option"
+				class="select__option text--black"
 				v-for="(option, index) in options"
 				:key="option.id"
 				:value="index"
@@ -46,19 +45,17 @@ export default {
 };
 </script>
 
-<style scoped>
-* {
-	color: black;
-}
-.search {
+<style>
+.search-field {
 	display: flex;
 	flex-direction: column;
 	width: 300px;
+	font-family: inherit;
 }
-.search__input {
+.search-field__text {
 	padding: 5px;
 }
-.search__select {
+.search-field__select {
 	background: transparent;
 	border: none;
 	overflow: hidden;

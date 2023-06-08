@@ -1,6 +1,6 @@
 <template>
-	<div class="forecast">
-		<div class="wrapper">
+	<div class="forecast-hour">
+		<div class="forecast-hour__body box--border">
 			<forecast-hour-item
 				v-for="hour in forecastHour"
 				:forecast="hour"
@@ -42,17 +42,14 @@ export default {
 };
 </script>
 
-<style scoped>
-.forecast {
+<style>
+.forecast-hour {
 	display: flex;
 	justify-content: center;
 	margin-top: 10px;
 }
-.wrapper {
-	border: 1px solid white;
-	border-radius: 12px;
+.forecast-hour__body {
 	padding: 5px;
 	display: flex;
-	justify-content: center;
 }
 </style>

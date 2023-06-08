@@ -1,8 +1,8 @@
 <template>
-	<div class="forecast-day text-center-vertical">
-		<p>{{ forecast.day }}</p>
+	<div class="forecast-day__item">
+		<p class="text--center-vertical">{{ forecast.day }}</p>
 		<img style="text-align: center" :src="forecast.icon" />
-		<p style="text-align: end">{{ forecast.temp }}</p>
+		<p class="text--center-vertical">{{ forecast.temp }}</p>
 	</div>
 </template>
 
@@ -17,13 +17,10 @@ export default {
 };
 </script>
 
-<style scoped>
-.forecast-day {
+<style>
+.forecast-day__item {
 	display: grid;
 	grid-template-columns: 2fr 2fr 1fr;
 	padding: 0 10px;
-}
-.text-center-vertical {
-	line-height: 60px;
 }
 </style>

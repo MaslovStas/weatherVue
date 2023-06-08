@@ -1,23 +1,23 @@
 <template>
 	<aside class="sidebar">
 		<ul>
-			<city-item
+			<city-list-item
 				v-for="(forecast, coords) in forecasts"
 				:forecast="forecast"
 				:key="coords"
 				@choose="chooseCity"
-				:class="{ item__active: coords === this.currentCoords }"
-			></city-item>
+				:class="{ 'sidebar__item--active': coords === this.currentCoords }"
+			/>
 		</ul>
 	</aside>
 </template>
 
 <script>
-import CityItem from "./CityItem";
+import CityListItem from "./CityListItem";
 
 export default {
 	components: {
-		CityItem,
+		CityListItem,
 	},
 	props: {
 		forecasts: {
@@ -37,12 +37,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .sidebar {
 	border-right: 2px solid white;
 	padding: 20px;
 }
-.item__active {
+.sidebar__item--active {
 	border-radius: 12px;
 	border: 1px solid;
 	background: rgba(255, 255, 255, 0.3);
