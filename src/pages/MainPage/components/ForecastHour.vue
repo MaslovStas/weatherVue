@@ -2,41 +2,31 @@
 	<div class="forecast-hour">
 		<div class="forecast-hour__body box--border">
 			<forecast-hour-item
-				v-for="hour in forecastHour"
-				:forecast="hour"
-				:key="hour.time"
-			></forecast-hour-item>
+				v-for="forecast in forecastHour"
+				:forecast="forecast"
+				:key="forecast.time"
+			/>
 		</div>
 	</div>
 </template>
 
 <script>
 import ForecastHourItem from "./ForecastHourItem";
+import { mapGetters } from "vuex";
 
 export default {
 	components: {
 		ForecastHourItem,
 	},
-	props: {
-		forecast: {
-			type: Object,
-			required: true,
-		},
-	},
 	computed: {
+		...mapGetters({
+			forecast: "weather/forecast",
+		}),
 		forecastHour() {
-			const currentHour = new Date().getHours();
-			const forecastToday = this.forecast.forecast.forecastday[0].hour;
-			const forecastTomorrow = this.forecast.forecast.forecastday[1].hour;
-
-			const result = [...forecastToday, ...forecastTomorrow]
-				.slice(currentHour, currentHour + 10)
-				.map((hour, index) => ({
-					time: index !== 0 ? new Date(hour.time).getHours() : "Now",
-					icon: hour.condition.icon,
-					desc: hour.temp_c + "°",
-				}));
-			return result;
+			const now = new Date().getHours();
+			const forecast = this.forecast.hour.slice(now, now + 10);
+			forecast[0].time = "Now";
+			return forecast;
 		},
 	},
 };

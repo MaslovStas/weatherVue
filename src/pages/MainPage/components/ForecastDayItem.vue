@@ -1,7 +1,7 @@
 <template>
-	<div class="forecast-day__item">
+	<div class="forecast-day__item .text--center">
 		<p class="text--center-vertical">{{ forecast.day }}</p>
-		<img style="text-align: center" :src="forecast.icon" />
+		<img :src="forecast.icon" />
 		<p class="text--center-vertical">{{ forecast.temp }}</p>
 	</div>
 </template>

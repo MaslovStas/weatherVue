@@ -5,7 +5,7 @@
 				v-for="(forecast, coords) in forecasts"
 				:forecast="forecast"
 				:key="coords"
-				@choose="chooseCity"
+				@click="setCurrentCoords(coords)"
 				:class="{ 'sidebar__item--active': coords === this.currentCoords }"
 			/>
 		</ul>
@@ -14,25 +14,22 @@
 
 <script>
 import CityListItem from "./CityListItem";
+import { mapState, mapMutations } from "vuex";
 
 export default {
 	components: {
 		CityListItem,
 	},
-	props: {
-		forecasts: {
-			type: Object,
-			required: true,
-		},
-		currentCoords: {
-			type: String,
-			required: true,
-		},
-	},
 	methods: {
-		chooseCity(coords) {
-			this.$emit("choose", coords);
-		},
+		...mapMutations({
+			setCurrentCoords: "weather/setCurrentCoords",
+		}),
+	},
+	computed: {
+		...mapState({
+			forecasts: (state) => state.weather.forecasts,
+			currentCoords: (state) => state.weather.currentCoords,
+		}),
 	},
 };
 </script>

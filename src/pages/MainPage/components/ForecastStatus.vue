@@ -1,31 +1,20 @@
 <template>
 	<div class="text--center">
-		<h3>{{ status.name }}</h3>
-		<h3>{{ status.temp }}°</h3>
-		<h5>{{ status.text }}</h5>
-		<p>Min: {{ status.mintemp }}°, max: {{ status.maxtemp }}°</p>
+		<h1>{{ forecast.name }}</h1>
+		<h3>{{ forecast.temp }}</h3>
+		<h5>{{ forecast.text }}</h5>
+		<span>{{ forecast.minmax }}</span>
 	</div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-	props: {
-		forecast: {
-			type: Object,
-			required: true,
-		},
-	},
 	computed: {
-		status() {
-			const currentHour = new Date().getHours();
-			return {
-				name: this.forecast.location.name,
-				temp: this.forecast.forecast.forecastday[0].hour[currentHour].temp_c,
-				text: this.forecast.current.condition.text,
-				mintemp: this.forecast.forecast.forecastday[0].day.mintemp_c,
-				maxtemp: this.forecast.forecast.forecastday[0].day.maxtemp_c,
-			};
-		},
+		...mapGetters({
+			forecast: "weather/forecast",
+		}),
 	},
 };
 </script>

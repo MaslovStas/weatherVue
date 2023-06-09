@@ -2,14 +2,15 @@
 	<div class="city-search">
 		<my-input
 			v-model:inputValue="searchQuery"
-			v-model:selectValue="selectedCityIndex"
 			:options="cities"
+			v-model:selectValue="selectedCityIndex"
 		/>
 	</div>
 </template>
 
 <script>
 import getApi from "@/utils/getApi";
+import { mapActions } from "vuex";
 
 export default {
 	data() {
@@ -19,8 +20,10 @@ export default {
 			cities: [],
 		};
 	},
-	emits: ["choose"],
 	methods: {
+		...mapActions({
+			getWeather: "weather/getWeather",
+		}),
 		async searchCity() {
 			this.cities = await getApi(
 				"https://weatherapi-com.p.rapidapi.com/search.json",
@@ -40,7 +43,7 @@ export default {
 				const city = this.cities[index];
 				const coords = `${city.lat},${city.lon}`;
 				this.searchQuery = "";
-				this.$emit("choose", coords);
+				this.getWeather(coords);
 				this.selectedCityIndex = "";
 			}
 		},
