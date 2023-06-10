@@ -23,14 +23,15 @@ export const weatherModule = {
 		},
 	},
 	actions: {
-		async getWeather({ commit }, coords) {
+		async getWeather({ commit }, query) {
 			const forecast = await getApi(
 				"https://weatherapi-com.p.rapidapi.com/forecast.json",
 				{
-					q: `${coords}`,
+					q: `${query}`,
 					days: "10",
 				}
 			);
+			const coords = `${forecast.location.lat},${forecast.location.lon}`;
 			commit("setCurrentCoords", coords);
 			commit("addForecast", handlerForecast(forecast));
 		},

@@ -8,7 +8,7 @@
 			@keyup.enter="handleEnter"
 			required
 		/>
-		<datalist id="cities">
+		<datalist class="city-search__select" id="cities">
 			<option
 				v-for="city in cities"
 				:key="city.id"
@@ -69,5 +69,8 @@ export default {
 .city-search__input {
 	color: black;
 	width: 200px;
+}
+.city-search__input::-webkit-outer-spin-button {
+	background-color: aquamarine;
 }
 </style>
