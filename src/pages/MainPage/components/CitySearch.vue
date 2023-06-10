@@ -1,10 +1,22 @@
 <template>
 	<div class="city-search">
-		<my-input
-			v-model:inputValue="searchQuery"
-			:options="cities"
-			v-model:selectValue="selectedCityIndex"
+		<input
+			class="city-search__input"
+			v-model="searchQuery"
+			type="text"
+			list="cities"
+			@keyup.enter="handleEnter"
+			required
 		/>
+		<datalist id="cities">
+			<option
+				v-for="city in cities"
+				:key="city.id"
+				:value="`${city.lat},${city.lon}`"
+			>
+				{{ city.name }}, {{ city.country }}
+			</option>
+		</datalist>
 	</div>
 </template>
 
@@ -16,7 +28,6 @@ export default {
 	data() {
 		return {
 			searchQuery: "",
-			selectedCityIndex: "",
 			cities: [],
 		};
 	},
@@ -32,20 +43,17 @@ export default {
 				}
 			);
 		},
+		handleEnter() {
+			if (this.searchQuery) {
+				this.getWeather(this.searchQuery);
+				this.searchQuery = "";
+			}
+		},
 	},
 
 	watch: {
 		searchQuery() {
 			this.searchQuery.length > 2 ? this.searchCity() : (this.cities = []);
-		},
-		selectedCityIndex(index) {
-			if (this.selectedCityIndex) {
-				const city = this.cities[index];
-				const coords = `${city.lat},${city.lon}`;
-				this.searchQuery = "";
-				this.getWeather(coords);
-				this.selectedCityIndex = "";
-			}
 		},
 	},
 };
@@ -56,7 +64,10 @@ export default {
 	display: flex;
 	justify-content: end;
 	padding: 20px;
-	height: 180px;
 	width: 100%;
+}
+.city-search__input {
+	color: black;
+	width: 200px;
 }
 </style>
